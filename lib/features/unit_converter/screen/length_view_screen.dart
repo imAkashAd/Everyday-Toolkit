@@ -52,7 +52,6 @@ class LengthViewScreen extends StatelessWidget {
                       child: SizedBox(
                         width: 250.w,
                         child: TextField(
-                          
                           cursorHeight: 40.h,
                           controller: TextEditingController(text: controller.fromValue.value)
                             ..selection = TextSelection.fromPosition(
@@ -75,7 +74,7 @@ class LengthViewScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(16.r),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.green),
+                                borderSide: BorderSide(color: Color(0xFFF6B187)),
                                 borderRadius: BorderRadius.circular(16.r),
                               ),
                             border: InputBorder.none,

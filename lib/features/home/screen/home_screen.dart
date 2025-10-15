@@ -57,7 +57,9 @@ class HomeScreen extends StatelessWidget {
                           title: 'Clock & Alarm',
                           boxColor: Color(0xFF9DD493),
                           iconPath: IconPath.alarm,
-                          onTap: () {  },
+                          onTap: () { 
+                            Get.toNamed(AppRoute.getClockAndAlarmScreen());
+                           },
                         ),
                         SizedBox(width: 16.w),
                         FeatureContainerWidgets(

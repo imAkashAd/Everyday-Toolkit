@@ -1,56 +1,52 @@
 import 'package:get/get.dart';
 
-class LengthViewScreenController extends GetxController {
+class WeightViewScreenController extends GetxController {
   // Observable variables
   var fromValue = '0'.obs;
   var toValue = '0'.obs;
-  var fromUnit = 'Meters'.obs;
-  var toUnit = 'Feet'.obs;
+  var fromUnit = 'Kilograms'.obs;
+  var toUnit = 'Grams'.obs;
 
   // Available units
   final List<String> units = [
-    'Meters',
-    'Kilometers',
-    'Centimeters',
-    'Millimeters',
-    'Miles',
-    'Yards',
-    'Feet',
-    'Inches',
+    'Kilograms',
+    'Grams',
+    'Milligrams',
+    'Pounds',
+    'Ounces',
+    'Tons',
   ];
 
-  // Conversion rates to meters (base unit)
-  final Map<String, double> toMeters = {
-    'Meters': 1.0,
-    'Kilometers': 1000.0,
-    'Centimeters': 0.01,
-    'Millimeters': 0.001,
-    'Miles': 1609.34,
-    'Yards': 0.9144,
-    'Feet': 0.3048,
-    'Inches': 0.0254,
+  // Conversion rates to kilograms (base unit)
+  final Map<String, double> toKilograms = {
+    'Kilograms': 1.0,
+    'Grams': 0.001,
+    'Milligrams': 0.000001,
+    'Pounds': 0.453592,
+    'Ounces': 0.0283495,
+    'Tons': 1000.0,
   };
 
   @override
   void onInit() {
     super.onInit();
     fromValue.value = '';
-    convertLength();
+    convertWeight();
   }
 
   void updateFromValue(String value) {
     fromValue.value = value;
-    convertLength();
+    convertWeight();
   }
 
   void updateFromUnit(String unit) {
     fromUnit.value = unit;
-    convertLength();
+    convertWeight();
   }
 
   void updateToUnit(String unit) {
     toUnit.value = unit;
-    convertLength();
+    convertWeight();
   }
 
   void swapUnits() {
@@ -60,17 +56,20 @@ class LengthViewScreenController extends GetxController {
     toUnit.value = tempUnit;
     fromValue.value = toValue.value;
     
-    convertLength();
+    convertWeight();
   }
 
-  void convertLength() {
+  void convertWeight() {
     try {
       double inputValue = double.parse(fromValue.value);
       
-      double valueInMeters = inputValue * toMeters[fromUnit.value]!;
+      // Convert to kilograms first
+      double valueInKilograms = inputValue * toKilograms[fromUnit.value]!;
       
-      double result = valueInMeters / toMeters[toUnit.value]!;
+      // Convert from kilograms to target unit
+      double result = valueInKilograms / toKilograms[toUnit.value]!;
       
+      // Format the result
       String formattedResult;
       
       if (result.abs() >= 1e10) {
@@ -78,10 +77,8 @@ class LengthViewScreenController extends GetxController {
       } else if (result == result.toInt()) {
         formattedResult = result.toInt().toString();
       } else {
-        // Limit decimal places based on the size of the number
         int decimals = result.abs() < 0.01 ? 6 : result.abs() < 1 ? 4 : 2;
         formattedResult = result.toStringAsFixed(decimals);
-        // Remove trailing zeros
         formattedResult = formattedResult.replaceAll(RegExp(r'\.?0+$'), '');
       }
       

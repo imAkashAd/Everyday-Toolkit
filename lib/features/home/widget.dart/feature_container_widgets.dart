@@ -24,7 +24,7 @@ class FeatureContainerWidgets extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.all(24.0),
+          padding: EdgeInsets.all(20.0),
           decoration: BoxDecoration(
             color: boxColor,
             borderRadius: BorderRadius.circular(16.0),

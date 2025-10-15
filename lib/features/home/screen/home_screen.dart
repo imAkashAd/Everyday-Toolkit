@@ -1,5 +1,4 @@
 // import 'package:api_test/Home/widget.dart/custom_app_bar.dart';
-import 'package:api_test/features/calculator/calculator_screen.dart';
 import 'package:api_test/features/home/widget.dart/feature_container_widgets.dart';
 import 'package:api_test/core/common/widgets/custom_app_bar.dart';
 import 'package:api_test/core/utils/constants/icon_path.dart';
@@ -15,11 +14,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
+      body: SizedBox(
+        height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CustomAppBar(title: 'Everyday Toolkit'),
+              CustomAppBar(
+                homePage: true,
+                title: 'Everyday Toolkit'),
               Padding(
                 padding: EdgeInsets.all(16.w),
                 child: Column(
@@ -41,7 +43,9 @@ class HomeScreen extends StatelessWidget {
                           title: 'Unit Converter',
                           boxColor: Color(0xFFF6B187),
                           iconPath: IconPath.convert,
-                          onTap: () {  },
+                          onTap: () { 
+                            Get.toNamed(AppRoute.getUnitConverterScreen());
+                           },
                         ),
                       ],
                     ),

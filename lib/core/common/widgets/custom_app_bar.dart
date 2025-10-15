@@ -6,15 +6,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final Color? dividerColor;
   final String title;
-  final VoidCallback? onMarkAllRead; // optional callback
+  final  bool? homePage;
 
   const CustomAppBar({
     super.key,
     this.backgroundColor,
     this.dividerColor,
     required this.title,
-    this.onMarkAllRead,
     this.dividerHeight,
+    this.homePage,
   });
 
   @override
@@ -23,11 +23,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      decoration: BoxDecoration(color: backgroundColor ?? Color(0xFF3FA399   )),
+      padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 50.h, bottom: 16.h),
+      decoration: BoxDecoration(color: backgroundColor ?? Color(0xFF3FA399)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+
+          if (homePage == false)
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white,),
+            )
+            else 
+            SizedBox(width: 24.w,),
           Center(
           child: Text(
             title,
@@ -40,7 +50,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           )
         ),
         SizedBox(width: 80.w,),
-        Icon(Icons.settings, color: Colors.white,),
+
+        if (homePage == true)
+        GestureDetector(
+          onTap: () {},
+          child: Icon(Icons.settings, color: Colors.white,)),
         ],
       )
     );

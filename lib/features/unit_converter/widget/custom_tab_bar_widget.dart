@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:api_test/core/common/styles/global_text_style.dart';
 import 'package:api_test/features/unit_converter/controller/custom_tab_bar_widget_controller.dart';
 import 'package:flutter/material.dart';

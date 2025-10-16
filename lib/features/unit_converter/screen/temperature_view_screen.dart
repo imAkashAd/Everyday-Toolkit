@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:api_test/core/common/widgets/text_property.dart';
 import 'package:api_test/core/utils/constants/icon_path.dart';
 import 'package:api_test/features/unit_converter/controller/temperature_view_screen_controller.dart';

@@ -74,7 +74,6 @@ class ClockAndAlarmScreenController extends GetxController {
 				_countdownTimer?.cancel();
 				isTimerRunning.value = false;
 				timerRemaining.value = Duration.zero;
-				// TODO: trigger alarm sound/notification
 			} else {
 				timerRemaining.value = Duration(seconds: timerRemaining.value.inSeconds - 1);
 			}

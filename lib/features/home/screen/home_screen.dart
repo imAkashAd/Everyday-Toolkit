@@ -66,7 +66,9 @@ class HomeScreen extends StatelessWidget {
                           title: 'Notes & List',
                           boxColor: Color(0xFFA596CD),
                           iconPath: IconPath.notepad,
-                          onTap: () {  },
+                          onTap: () { 
+                            Get.toNamed(AppRoute.getNotesAndListsScreen());
+                           },
                         ),
                       ],
                     ),

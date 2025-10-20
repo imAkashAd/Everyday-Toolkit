@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class StopwatchView extends StatelessWidget {
-  StopwatchView({super.key});
+  const StopwatchView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ctl = Get.put(ClockAndAlarmScreenController());
+    final ctl = Get.find<ClockAndAlarmScreenController>();
     
     return Padding(
       padding: EdgeInsets.all(12.w),

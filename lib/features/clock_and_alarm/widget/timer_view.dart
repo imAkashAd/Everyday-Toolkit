@@ -1,14 +1,15 @@
+import 'package:api_test/core/common/styles/global_text_style.dart';
 import 'package:api_test/features/clock_and_alarm/controller/clock_and_alarm_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class TimerView extends StatelessWidget {
-  TimerView({super.key});
+  const TimerView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ctl = Get.put(ClockAndAlarmScreenController());
+    final ctl = Get.find<ClockAndAlarmScreenController>();
     
     return Padding(
       padding: EdgeInsets.all(12.w),
@@ -22,7 +23,7 @@ class TimerView extends StatelessWidget {
               children: [
                 Text(
                   text,
-                  style: TextStyle(
+                  style: getTextStyle(
                     fontSize: 48.sp,
                     fontWeight: FontWeight.bold,
                   ),

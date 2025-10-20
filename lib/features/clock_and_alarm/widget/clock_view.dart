@@ -10,7 +10,7 @@ class ClockView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ctl = Get.put(ClockAndAlarmScreenController());
+    final ctl = Get.find<ClockAndAlarmScreenController>();
     
     return Obx(() {
               final now = ctl.currentTime.value;
@@ -39,7 +39,7 @@ class ClockView extends StatelessWidget {
                       backgroundColor: Color(0xFF9DD493),
                       hourHandColor: Colors.blue,
                       minuteHandColor: Colors.blue,
-                      secondHandColor: Colors.deepPurpleAccent,
+                     
                       centerDotColor: Colors.white,
                       hourDashColor: Color.fromARGB(255, 32, 136, 14),
                       minuteDashColor: Colors.blue,

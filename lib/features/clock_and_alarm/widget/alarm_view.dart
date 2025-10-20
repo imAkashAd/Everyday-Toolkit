@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class AlarmView extends StatelessWidget {
-  AlarmView({super.key});
+  const AlarmView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ctl = Get.put(ClockAndAlarmScreenController());
+    final ctl = Get.find<ClockAndAlarmScreenController>();
     
     return Padding(
       padding: EdgeInsets.all(12.w),
@@ -30,12 +30,15 @@ class AlarmView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Switch(
+                          activeColor: Color.fromARGB(255, 109, 209, 92),
+                          inactiveThumbColor: Colors.orangeAccent,
+                          inactiveTrackColor: Colors.orangeAccent.withOpacity(0.5),
+                          trackOutlineColor: MaterialStateProperty.all(Colors.transparent),
                           value: alarm.enabled,
-                          onChanged: (_) =>
-                              ctl.toggleAlarmEnabled(index),
+                          onChanged: (_) => ctl.toggleAlarmEnabled(index),
                         ),
                         IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: Icon(Icons.delete, color: Colors.redAccent),
                           onPressed: () => ctl.removeAlarm(index),
                         ),
                       ],
@@ -68,7 +71,7 @@ class AlarmView extends StatelessWidget {
                   Icon(Icons.alarm, color: Colors.white),
                   SizedBox(width: 8.w),
                   Text(
-                    'Set Alarm',
+                    'Add Alarm',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.sp,

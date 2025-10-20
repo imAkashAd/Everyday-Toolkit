@@ -9,7 +9,7 @@ class CustomClockTabBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CustomClockTabBarWidgetController());
+    final controller = Get.find<CustomClockTabBarWidgetController>();
 
     return Obx(() {
       return SingleChildScrollView(
